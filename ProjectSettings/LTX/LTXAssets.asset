@@ -118,3 +118,12 @@ MonoBehaviour:
         la garanti qu'il ne serapas dans le build.\n\nPour plus d'infos :\nhttps://docs.unity3d.com/Manual/SpecialFolders.html"
       fontSize: 20
     path: Assets/Editor Default Resources
+  - annotation:
+      annotation: "Sur Unity 6 utilisez plut\xF4t les build profiles.\n\nSinon, voici
+        quelques templates de settings de build corrects.\n\n\nATTENTION : Les builds
+        mono et IL2CPP ne profitent pas de l'incremental entre eux, essayer de regulierement
+        en faire un de chaque.\n\nAussi, pour vois builds, cr\xE9ez un dossier Builds
+        \xE0 la source du projet (PAS DANS ASSETS, A COT\xC9 DE ASSETS, il ne faut
+        pas qu'il apparaisse dans l'\xE9diteur)"
+      fontSize: 15
+    path: Assets/Project/Editor/Presets/Player
