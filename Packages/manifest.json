@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "com.ltx.channeled-properties": "https://github.com/Helteix/ChanneledProperties.git",
-    "com.ltx.singletons": "https://github.com/Helteix/Singletons.git",
-    "com.ltx.tools": "https://github.com/Helteix/Tools.git",
+    "com.ltx.channeled-properties": "1.0.0",
+    "com.ltx.singletons": "1.0.1",
+    "com.ltx.tools": "1.0.1",
     "com.unity.cinemachine": "2.10.1",
     "com.unity.collab-proxy": "2.5.1",
     "com.unity.feature.development": "1.0.1",
@@ -45,5 +45,14 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "Helteix",
+      "url": "https://helteix-verdaccio.euvtgm.easypanel.host",
+      "scopes": [
+        "com.ltx"
+      ]
+    }
+  ]
 }
