@@ -1,10 +1,10 @@
 {
-    "name": "NomDuJeu.Editor",
-    "rootNamespace": "NomDuJeu.Editor",
-    "references": [],
-    "includePlatforms": [
-        "Editor"
+    "name": "PuzzleSystem.sample",
+    "rootNamespace": "PuzzleSystem.sample",
+    "references": [
+        "GUID:0167f8bc5a54b094480e6fea75965e16"
     ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

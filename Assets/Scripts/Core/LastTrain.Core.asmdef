@@ -1,6 +1,6 @@
 {
-    "name": "NomDuJeu.Core",
-    "rootNamespace": "NomDuJeu.Core",
+    "name": "LastTrain.Core",
+    "rootNamespace": "LastTrain.Core",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
