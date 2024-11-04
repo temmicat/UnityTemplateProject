@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2055966bbc016f4f99dcb278472b9d2, type: 3}
-  m_Name: New Sample Condition Data
+  m_Script: {fileID: 11500000, guid: 8ced1c232af5474fb292ec416c3acdb6, type: 3}
+  m_Name: New Sample Puzzle Data
   m_EditorClassIdentifier: 
+  <PuzzleName>k__BackingField: Test 1
+  <Conditions>k__BackingField:
+  - {fileID: 11400000, guid: 7400d92fd9c59c34299cef075506a141, type: 2}
+  <KeyCode>k__BackingField: 9
