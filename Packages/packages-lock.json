@@ -1,25 +1,25 @@
 {
   "dependencies": {
     "com.ltx.channeled-properties": {
-      "version": "1.0.0",
+      "version": "https://github.com/Helteix/ChanneledProperties.git",
       "depth": 0,
-      "source": "registry",
+      "source": "git",
       "dependencies": {},
-      "url": "https://helteix-verdaccio.euvtgm.easypanel.host"
+      "hash": "e2e5b554d2327995fcf73c216e8455fb91c0636c"
     },
     "com.ltx.singletons": {
-      "version": "1.0.1",
+      "version": "https://github.com/Helteix/Singletons.git",
       "depth": 0,
-      "source": "registry",
+      "source": "git",
       "dependencies": {},
-      "url": "https://helteix-verdaccio.euvtgm.easypanel.host"
+      "hash": "0442f847d0ccff3d89dafaa2fe609c8fd81479ed"
     },
     "com.ltx.tools": {
-      "version": "1.0.1",
+      "version": "https://github.com/Helteix/Tools.git",
       "depth": 0,
-      "source": "registry",
+      "source": "git",
       "dependencies": {},
-      "url": "https://helteix-verdaccio.euvtgm.easypanel.host"
+      "hash": "d475583ae3cef348587ee1c5aa7bb662ef3fbc2e"
     },
     "com.unity.burst": {
       "version": "1.8.18",
