@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using LTX.Singletons;
 using LTX.Tools;
 using PuzzleSystem.Core.Data;
+using UnityEngine;
 
 namespace PuzzleSystem.Core
 {
@@ -10,7 +11,7 @@ namespace PuzzleSystem.Core
     {
         public event Action<Puzzle> OnPuzzleStarted;
         public event Action<Puzzle> OnPuzzleStopped;
-
+        [SerializeField]
         private List<Puzzle> puzzles;
         private DynamicBuffer<Puzzle> puzzlesBuffer;
 
@@ -25,12 +26,15 @@ namespace PuzzleSystem.Core
         private void Update()
         {
             puzzlesBuffer.CopyFrom(puzzles);
-
+            
+            
             for (int i = 0; i < puzzlesBuffer.Length; i++)
             {
+                Puzzle puzzle = puzzlesBuffer[i];
+
                 //If done, then stop the puzzle
-                if(puzzlesBuffer[i].Refresh())
-                    StopPuzzle(puzzlesBuffer[i], true);
+                if (puzzle.Refresh())
+                    StopPuzzle(puzzle, true);
             }
         }
 
@@ -40,10 +44,11 @@ namespace PuzzleSystem.Core
                 return;
 
             puzzle.puzzleData.Begin();
-
             puzzles.Add(puzzle);
+
             OnPuzzleStarted?.Invoke(puzzle);
         }
+
 
         public void StopPuzzle(Puzzle puzzle, bool isSuccess = false)
         {
