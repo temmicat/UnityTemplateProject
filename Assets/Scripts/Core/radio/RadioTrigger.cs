@@ -4,19 +4,18 @@ using UnityEngine;
 
 namespace LastTrain.Core
 {
-    public class ChangeMaterialColor : MonoBehaviour
+    public class RadioTrigger : MonoBehaviour
     {
-        [SerializeField] private Material myMaterial;
 
-
+        public GameObject Batterie;
+        private bool hasBattery;
 
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("canPickUp"))
             {
-
-                myMaterial.color = Color.green;
+                hasBattery = true;
             }
         }
 
@@ -25,12 +24,19 @@ namespace LastTrain.Core
         {
             if (other.CompareTag("canPickUp"))
             {
-
-                myMaterial.color = Color.red;
+                hasBattery = false;
             }
         }
 
+        // Update is called once per frame
+        void Update()
+        {
 
 
+            if (hasBattery && Input.GetKeyDown(KeyCode.E))
+            {
+                Destroy(Batterie);
+            }
+        }
     }
 }
