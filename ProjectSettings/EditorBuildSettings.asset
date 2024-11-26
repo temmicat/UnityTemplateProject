@@ -4,5 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/test puzzle/LD.unity
+    guid: 6630035e049ca474f84c19cdcfbd334a
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 6934832222ee45d4f8decae9aff399af, type: 3}

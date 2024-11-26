@@ -3,7 +3,8 @@
     "rootNamespace": "LastTrain.Core",
     "references": [
         "GUID:07d20c93b0fc46948bf44b0da168360e",
-        "GUID:7f6fdd18b438ff245b7f869ddfb77b44"
+        "GUID:7f6fdd18b438ff245b7f869ddfb77b44",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

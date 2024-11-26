@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using LTX.Singletons;
+using PuzzleSystem.Core;
 using UnityEngine;
 
 namespace LastTrain.Core
 {
-    public class BoiteMusiqueSetup : MonoBehaviour
+    public class BoiteMusiqueSetup : MonoSingleton<BoiteMusiqueSetup>
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        [HideInInspector]
         
-        }
+        public bool HasPuzzleStarted;
+        public BoiteMusique boiteMusique;
+        public Puzzle puzzle;
+        public Photo photo;
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
+
     }
 }
