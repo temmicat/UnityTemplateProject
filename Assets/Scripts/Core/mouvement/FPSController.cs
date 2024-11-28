@@ -10,9 +10,14 @@ namespace LastTrain.Core
        
     public Camera playerCamera;
     public float walkSpeed = 6f;
-    public float runSpeed = 12f;
     public float jumpPower = 7f;
     public float gravity = 10f;
+    public float crouchSpeed = 1f;
+    
+    public bool isCrouching;
+
+    public Transform cameraHolderTransform;
+    private Vector3 normalHeight;
  
  
     public float lookSpeed = 2f;
@@ -31,6 +36,9 @@ namespace LastTrain.Core
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+
+        normalHeight = cameraHolderTransform.position;
     }
  
     void Update()
@@ -41,9 +49,13 @@ namespace LastTrain.Core
         Vector3 right = transform.TransformDirection(Vector3.right);
  
         // Press Left Shift to run
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
+        // bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        
+        // Press Left Control to Crouch
+        isCrouching = Input.GetKey(KeyCode.LeftControl);
+        
+        float curSpeedX = canMove ? (isCrouching ? crouchSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
+        float curSpeedY = canMove ? (isCrouching ? crouchSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
  
@@ -65,6 +77,18 @@ namespace LastTrain.Core
         }
  
         #endregion
+
+        if (isCrouching)
+        {
+            var position = cameraHolderTransform.position;
+            playerCamera.transform.position = new Vector3(position.x, 
+                position.y - 1f,
+                position.z);
+        }
+        else
+        {
+            playerCamera.transform.position = cameraHolderTransform.position;
+        }
  
         #region Handles Rotation
         characterController.Move(moveDirection * Time.deltaTime);
@@ -73,6 +97,7 @@ namespace LastTrain.Core
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+            
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
