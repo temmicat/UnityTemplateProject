@@ -6,7 +6,7 @@ namespace LastTrain.Core
 {
     public class Zoom : MonoBehaviour
     {
-        public GameObject ZoomCamera;
+        public Camera ZoomCamera;
         
         // Start is called before the first frame update
         void Start()
@@ -28,14 +28,14 @@ namespace LastTrain.Core
             }
         }
 
-        void ZoomIn()
-        {
-            ZoomCamera.SetActive(true);
-        }
-
         void ZoomOut()
         {
-            ZoomCamera.SetActive(false);        
+            ZoomCamera.fieldOfView = 60;
+        }
+
+        void ZoomIn()
+        {
+            ZoomCamera.fieldOfView = 35;        
         }
     }
 }
