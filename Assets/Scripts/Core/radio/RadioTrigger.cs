@@ -9,6 +9,9 @@ namespace LastTrain.Core
 
         public GameObject Batterie;
         private bool hasBattery;
+        public GameObject PopUp;
+        private bool PlayerInRange;
+        
 
 
         private void OnTriggerEnter(Collider other)
@@ -16,6 +19,11 @@ namespace LastTrain.Core
             if (other.CompareTag("canPickUp"))
             {
                 hasBattery = true;
+            }
+
+            if (other.CompareTag("Player"))
+            {
+                PlayerInRange = true;
             }
         }
 
@@ -26,17 +34,34 @@ namespace LastTrain.Core
             {
                 hasBattery = false;
             }
+            if (other.CompareTag("Player"))
+            {
+                PlayerInRange = false;
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
-
-
-            if (hasBattery && Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                Destroy(Batterie);
+                if(hasBattery)
+                    Destroy(Batterie);
+                else if(PlayerInRange)
+                {
+                    StartCoroutine(DisplayText());
+                }
             }
         }
+
+        private IEnumerator DisplayText()
+        {
+            PopUp.SetActive(true);
+
+            yield return new WaitForSeconds(3f);
+            
+            PopUp.SetActive(false);
+        }
+            
     }
 }
