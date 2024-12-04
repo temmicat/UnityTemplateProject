@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUpScript : MonoBehaviour
 {
-      public GameObject player;
+    public GameObject player;
     public Transform holdPos;
     //if you copy from below this point, you are legally required to like the video
     public float throwForce = 500f; //force at which the object is thrown at
@@ -14,6 +14,7 @@ public class PickUpScript : MonoBehaviour
     private Rigidbody heldObjRb; //rigidbody of object we pick up
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
+    [SerializeField] private Transform lookTarget;
 
     public GameObject cursor;
     //Reference to script which includes mouse movement of player (looking around)
@@ -71,6 +72,8 @@ public class PickUpScript : MonoBehaviour
             heldObj.layer = LayerNumber; //change the object layer to the holdLayer
             //make sure object doesnt collide with player, it can cause weird bugs
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+            
+            pickUpObj.transform.LookAt(lookTarget);
         }
     }
     void DropObject()
