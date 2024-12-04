@@ -14,12 +14,12 @@ namespace LastTrain.Core
         public AudioClip radioSound;
         public Material red;
         public MeshRenderer afficheRadio;
-        
+        private bool isDone;
 
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("canPickUp"))
+            if (other.name == "RADIO_PILE")
             {
                 hasBattery = true;
             }
@@ -33,7 +33,7 @@ namespace LastTrain.Core
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("canPickUp"))
+            if (other.name == "RADIO_PILE")
             {
                 hasBattery = false;
             }
@@ -46,10 +46,12 @@ namespace LastTrain.Core
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !isDone)
             {
                 if (hasBattery)
                 {
+                    isDone = true;
+                    
                     Destroy(Batterie);
                     //play sound
                     AudioSource.PlayClipAtPoint(radioSound, transform.position);
