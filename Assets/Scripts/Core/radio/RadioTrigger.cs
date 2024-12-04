@@ -12,6 +12,8 @@ namespace LastTrain.Core
         public GameObject PopUp;
         private bool PlayerInRange;
         public AudioClip radioSound;
+        public Material red;
+        public MeshRenderer afficheRadio;
         
 
 
@@ -51,6 +53,9 @@ namespace LastTrain.Core
                     Destroy(Batterie);
                     //play sound
                     AudioSource.PlayClipAtPoint(radioSound, transform.position);
+                    
+                    //L'affiche change
+                    afficheRadio.sharedMaterial = red;
                 }
                 else if(PlayerInRange)
                 {
