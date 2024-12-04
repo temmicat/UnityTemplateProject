@@ -11,6 +11,9 @@ namespace LastTrain.Core
         private bool hasBattery;
         public GameObject PopUp;
         private bool PlayerInRange;
+        public AudioClip radioSound;
+        public Material red;
+        public MeshRenderer afficheRadio;
         
 
 
@@ -45,8 +48,15 @@ namespace LastTrain.Core
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if(hasBattery)
+                if (hasBattery)
+                {
                     Destroy(Batterie);
+                    //play sound
+                    AudioSource.PlayClipAtPoint(radioSound, transform.position);
+                    
+                    //L'affiche change
+                    afficheRadio.sharedMaterial = red;
+                }
                 else if(PlayerInRange)
                 {
                     StartCoroutine(DisplayText());
