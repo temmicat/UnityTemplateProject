@@ -3,7 +3,10 @@ guid: 60c136b454cc556429878d47200ac589
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Batterie: {instanceID: 0}
+  - PopUp: {instanceID: 0}
+  - radioSound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
