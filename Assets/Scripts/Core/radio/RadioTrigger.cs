@@ -19,7 +19,7 @@ namespace LastTrain.Core
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.name == "RADIO_PILE")
+            if (other.name == "RADIO_PILE HOLD")
             {
                 hasBattery = true;
             }
@@ -33,7 +33,7 @@ namespace LastTrain.Core
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.name == "RADIO_PILE")
+            if (other.name == "RADIO_PILE HOLD")
             {
                 hasBattery = false;
             }
@@ -53,6 +53,7 @@ namespace LastTrain.Core
                     isDone = true;
                     
                     Destroy(Batterie);
+                    
                     //play sound
                     AudioSource.PlayClipAtPoint(radioSound, transform.position);
                     
