@@ -15,7 +15,8 @@ namespace LastTrain.Core
         public Material red;
         public MeshRenderer afficheRadio;
         private bool isDone;
-
+        [SerializeField] private SubScript subs;
+        [SerializeField] private AudioSource source;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -55,7 +56,9 @@ namespace LastTrain.Core
                     Destroy(Batterie);
                     
                     //play sound
-                    AudioSource.PlayClipAtPoint(radioSound, transform.position);
+                    source.clip = radioSound;
+                    source.Play();
+                    StartCoroutine(subs.PlaySub());
                     
                     //L'affiche change
                     afficheRadio.sharedMaterial = red;
