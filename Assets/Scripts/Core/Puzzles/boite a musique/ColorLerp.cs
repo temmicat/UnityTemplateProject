@@ -9,6 +9,7 @@ namespace LastTrain.Core
         [SerializeField] private Color startColor;
         [SerializeField] private Color endColor;
         [SerializeField] private AudioSource BAM;
+        [SerializeField] private PickUpObject pickUp;
 
         private float t;
         private float startTime;
@@ -27,7 +28,7 @@ namespace LastTrain.Core
         // Update is called once per frame
         void Update()
         {
-            if (BAM.isPlaying)
+            if (BAM.isPlaying && !pickUp.OnCadre)
             {
                 t = (Time.time - startTime) * speed;
                 rend.material.color = Color.Lerp(startColor, endColor, t);
@@ -37,6 +38,11 @@ namespace LastTrain.Core
                 t = 0;
                 startTime = Time.time;
                 rend.material.color = startColor;
+            }
+
+            if (pickUp.OnCadre)
+            {
+                rend.material.color = endColor;
             }
         }
     }
