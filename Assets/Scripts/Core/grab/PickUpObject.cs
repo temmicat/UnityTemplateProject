@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace LastTrain.Core
 {
@@ -10,10 +7,11 @@ namespace LastTrain.Core
     {
         [SerializeField] private GameObject objectOnPlayer;
         [SerializeField] private GameObject objectWorld;
-        [SerializeField] private Transform tpObject;
+        [SerializeField] private Transform tpObject, cadre;
         [SerializeField] private AudioSource BAM;
         [SerializeField] private bool isPolaroid;
-        public bool hasObject { get; private set; }
+        private bool hasObject;
+        public bool OnCadre { get; private set; }
         private PickUpObject[] scripts;
 
         // Start is called before the first frame update
@@ -47,10 +45,15 @@ namespace LastTrain.Core
                 GrabObject();
             }
 
-            if (Input.GetKeyDown(KeyCode.T) && hasObject)
+            if (Input.GetKeyDown(KeyCode.Q) && hasObject)
             {
                 Debug.Log("drop");
                 DropObject();
+            }
+
+            if (Input.GetKeyDown(KeyCode.F) && hasObject && isPolaroid)
+            {
+                SetPicture();
             }
         }
 
@@ -77,8 +80,29 @@ namespace LastTrain.Core
            objectOnPlayer.SetActive(false);
            objectWorld.SetActive(true);
 
-           objectWorld.GetComponent<Rigidbody>().useGravity = true;
+           var rb = objectWorld.GetComponent<Rigidbody>();
+           rb.useGravity = true;
+           rb.isKinematic = false;
+           
+           objectWorld.transform.position = tpObject.position;
            objectWorld.transform.parent = null;
+        }
+
+        private void SetPicture()
+        {
+            hasObject = false;
+            OnCadre = true;
+            
+            objectOnPlayer.SetActive(false);
+            objectWorld.SetActive(true);
+
+            var rb = objectWorld.GetComponent<Rigidbody>();
+            rb.useGravity = false;
+            rb.isKinematic = true;
+
+            objectWorld.transform.position = cadre.position;
+            objectWorld.transform.parent = cadre;
+            objectWorld.transform.DORotate(new Vector3(0, 0, 0), 0.1f);
         }
     }
 }
