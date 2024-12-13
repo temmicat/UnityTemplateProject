@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 namespace LastTrain.Core
 {
     public class DollGrab : MonoBehaviour
     {
-        [SerializeField] private GameObject dollWorld, dollPlayer;
+        [SerializeField] [NotNull] private GameObject dollWorld, dollPlayer, numWorld, numPlayer;
         [SerializeField] private PickUpObject bam;
         
         private void Update()
@@ -15,6 +16,8 @@ namespace LastTrain.Core
                 {
                     dollPlayer.SetActive(true);
                     dollWorld.SetActive(true);
+                    numPlayer.SetActive(true);
+                    numWorld.SetActive(true);
                     
                     Destroy(gameObject);
                     Destroy(this);
