@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 265172146745760735}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.81, y: 0.59, z: 0.61}
   m_LocalScale: {x: 2.73, y: 2.73, z: 2.73}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -721,6 +721,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 2656823954948580389}
   isPolaroid: 1
+  bam: {fileID: 0}
 --- !u!114 &3006969539200627068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,6 +740,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 2656823954948580389}
   isPolaroid: 1
+  bam: {fileID: 0}
 --- !u!114 &59861825912352586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,6 +759,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 2656823954948580389}
   isPolaroid: 1
+  bam: {fileID: 0}
 --- !u!114 &859663313046798826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,6 +778,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 2656823954948580389}
   isPolaroid: 1
+  bam: {fileID: 0}
 --- !u!114 &2703867660326702154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,6 +797,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 2656823954948580389}
   isPolaroid: 1
+  bam: {fileID: 0}
 --- !u!114 &5763937018364907113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,6 +816,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 2656823954948580389}
   isPolaroid: 1
+  bam: {fileID: 1582091440397955228}
 --- !u!114 &7080843496170973050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,6 +835,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 2656823954948580389}
   isPolaroid: 1
+  bam: {fileID: 1582091440397955228}
 --- !u!114 &8090725311605060011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,6 +854,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 2656823954948580389}
   isPolaroid: 1
+  bam: {fileID: 1582091440397955228}
 --- !u!114 &3337678277935480370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,6 +873,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 2656823954948580389}
   isPolaroid: 1
+  bam: {fileID: 1582091440397955228}
 --- !u!114 &8225754128499158602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -883,6 +892,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 2656823954948580389}
   isPolaroid: 1
+  bam: {fileID: 1582091440397955228}
 --- !u!1 &1068425340144981953
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,6 +997,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 0}
   isPolaroid: 0
+  bam: {fileID: 0}
 --- !u!114 &1582091440397955228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,6 +1016,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 0}
   isPolaroid: 0
+  bam: {fileID: 0}
 --- !u!114 &3613327830971131494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1023,6 +1035,7 @@ MonoBehaviour:
   cadre: {fileID: 0}
   BAM: {fileID: 0}
   isPolaroid: 0
+  bam: {fileID: 0}
 --- !u!82 &2656823954948580389
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1666,7 +1679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6324613470444908499
 Transform:
   m_ObjectHideFlags: 0
@@ -1768,7 +1781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 2656823954948580389}
-  clip: {fileID: 8300000, guid: 020e454f528b3af4ea3692230b4343ae, type: 3}
+  clipUnfinished: {fileID: 8300000, guid: 020e454f528b3af4ea3692230b4343ae, type: 3}
+  clipFinished: {fileID: 8300000, guid: ccdc1026f90774226b4c0759093380b3, type: 3}
 --- !u!1 &2437893328771219303
 GameObject:
   m_ObjectHideFlags: 0

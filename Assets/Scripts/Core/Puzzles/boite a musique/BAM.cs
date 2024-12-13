@@ -1,5 +1,6 @@
-using System.Collections;
-using DG.Tweening;
+using System;
+using LastTrain.Core.Core.PuzzleSystem.Sample;
+using PuzzleSystem.Core;
 using UnityEngine;
 
 namespace LastTrain.Core
@@ -7,36 +8,38 @@ namespace LastTrain.Core
     public class BAM : MonoBehaviour
     {
         [SerializeField] private AudioSource source;
-        [SerializeField] private AudioClip clip;
-        
-        // Start is called before the first frame update
-        void OnEnable()
+        [SerializeField] private AudioClip clipUnfinished, clipFinished;
+        private AudioClip targetClip;
+
+        private void Start()
         {
-            //StartCoroutine(DoRotation(150, 1.5f));
-            //StartCoroutine(DoRotation(150, 1.5f));
-            //StartCoroutine(DoRotation(150, 1.5f));
-            /*
-            Sequence sequence = DOTween.Sequence();
-            sequence.Append(transform.DORotate(new Vector3(150, 0, 0),1.5f))
-                .Append(DOVirtual.DelayedCall(1f, () => {}))
-                .Append(transform.DORotate(new Vector3(150, 0, 0),1.5f))
-                .Append(DOVirtual.DelayedCall(1f, () => {}))
-                .Append(transform.DORotate(new Vector3(-300, 0, 0),3f));*/
+            targetClip = clipUnfinished;
         }
 
-        //IEnumerator DoRotation(float value, float time)
-        //{
-            //yield return new WaitForSeconds(time);
-            //transform.DORotate(new Vector3(value, 0, 0), 1.5f);
-        //}
+        private void OnEnable()
+        {
+            PuzzleManager.Instance.OnPuzzleStopped += OnPuzzleStopped;
+        }
 
-        // Update is called once per frame
+        private void OnDisable()
+        {
+            PuzzleManager.Instance.OnPuzzleStopped -= OnPuzzleStopped;
+        }
+        
+        private void OnPuzzleStopped(IPuzzleRunner puzzleRunner)
+        {
+            if (puzzleRunner.Puzzle is not Pictures) return;
+
+            targetClip = clipFinished;
+            Debug.Log("Change clip");
+        }
+        
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.P))
             {
                 if (source.isPlaying) return;
-                source.clip = clip;
+                source.clip = targetClip;
                 source.Play();
             }
         }

@@ -10,7 +10,8 @@ namespace LastTrain.Core
         [SerializeField] private Transform tpObject, cadre;
         [SerializeField] private AudioSource BAM;
         [SerializeField] private bool isPolaroid;
-        private bool hasObject;
+        [SerializeField] private PickUpObject bam;
+        public bool hasObject { get; private set; }
         public bool OnCadre { get; private set; }
         private PickUpObject[] scripts;
 
@@ -90,6 +91,8 @@ namespace LastTrain.Core
 
         private void SetPicture()
         {
+            if (!bam.hasObject) return;
+            
             hasObject = false;
             OnCadre = true;
             
