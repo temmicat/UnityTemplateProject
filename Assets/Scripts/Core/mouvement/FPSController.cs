@@ -10,8 +10,6 @@ namespace LastTrain.Core
        
     public Camera playerCamera;
     public float walkSpeed = 6f;
-    public float jumpPower = 7f;
-    public float gravity = 10f;
     public float crouchSpeed = 1f;
     
     public bool isCrouching;
@@ -56,28 +54,10 @@ namespace LastTrain.Core
         
         float curSpeedX = canMove ? (isCrouching ? crouchSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
         float curSpeedY = canMove ? (isCrouching ? crouchSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
-        float movementDirectionY = moveDirection.y;
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        float movementDirectionY = 9.81f;
+        moveDirection = (forward * curSpeedX) + (right * curSpeedY) + Vector3.down * movementDirectionY;
  
-        #endregion
- 
-        #region Handles Jumping
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
-        {
-            moveDirection.y = jumpPower;
-        }
-        else
-        {
-            moveDirection.y = movementDirectionY;
-        }
- 
-        if (!characterController.isGrounded)
-        {
-            moveDirection.y -= gravity * Time.deltaTime;
-        }
- 
-        #endregion
-
+        
         if (isCrouching)
         {
             var position = cameraHolderTransform.position;
@@ -89,9 +69,12 @@ namespace LastTrain.Core
         {
             playerCamera.transform.position = cameraHolderTransform.position;
         }
- 
-        #region Handles Rotation
+        
         characterController.Move(moveDirection * Time.deltaTime);
+ 
+        #endregion
+        
+        #region Handles Rotation
  
         if (canMove)
         {

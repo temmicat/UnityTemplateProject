@@ -11,6 +11,8 @@ namespace LastTrain.Core
         [SerializeField] private GameObject objectOnPlayer;
         [SerializeField] private GameObject objectWorld;
         [SerializeField] private Transform tpObject;
+        [SerializeField] private AudioSource BAM;
+        [SerializeField] private bool isPolaroid;
         public bool hasObject { get; private set; }
         private PickUpObject[] scripts;
 
@@ -54,6 +56,9 @@ namespace LastTrain.Core
 
         private void GrabObject()
         {
+
+            if (isPolaroid && !BAM.isPlaying) return;
+                
             hasObject = true;
             
             objectWorld.SetActive(false);
