@@ -41,13 +41,13 @@ namespace LastTrain.Core
                     }
                 }
                 
-                Debug.Log("grab");
+                //Debug.Log("grab");
                 GrabObject();
             }
 
             if (Input.GetKeyDown(KeyCode.Q) && hasObject)
             {
-                Debug.Log("drop");
+                //Debug.Log("drop");
                 DropObject();
             }
 
