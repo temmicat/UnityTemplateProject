@@ -25,7 +25,6 @@ namespace LastTrain.Core.Core.PuzzleSystem.Sample
         public override void End(ref PictureContext context, bool isSuccess)
         {
             context.doll.SetActive(true);
-            Debug.Log("Pictures Puzzle Ended - Doll visible");
         }
     }
 }

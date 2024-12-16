@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,9 +13,12 @@ namespace LastTrain.Core
         [SerializeField] private AudioSource BAM;
         [SerializeField] private bool isPolaroid;
         [SerializeField] private PickUpObject bam;
+        [SerializeField] private GameObject tableauInstruction;
         public bool hasObject { get; private set; }
         public bool OnCadre { get; private set; }
         private PickUpObject[] scripts;
+
+        private Coroutine displayTableau;
 
         // Start is called before the first frame update
         void Start()
@@ -52,10 +57,26 @@ namespace LastTrain.Core
                 DropObject();
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && hasObject && isPolaroid)
+            if (CursorTrigger.Instance.ObjectName == "Tableau" && isPolaroid && hasObject)
             {
-                SetPicture();
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    SetPicture();
+                }
+
+                if (displayTableau == null)
+                    displayTableau = StartCoroutine(DisplayText());
             }
+        }
+        
+        private IEnumerator DisplayText()
+        {
+            tableauInstruction.SetActive(true);
+
+            yield return new WaitForSeconds(1f);
+            
+            tableauInstruction.SetActive(false);
+            displayTableau = null;
         }
 
         private void GrabObject()

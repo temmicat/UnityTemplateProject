@@ -16,11 +16,21 @@ namespace LastTrain.Core
         {
             RaycastHit hit;
             bool isPickUpObjectInFront = Physics.Raycast(transform.position, transform.forward,
-                out hit, pickUpRange) && hit.collider.CompareTag("canPickUp");
+                out hit, pickUpRange) && (hit.collider.CompareTag("canPickUp")
+                                        || hit.collider.CompareTag("Tableau"));
 
             if (isPickUpObjectInFront)
             {
                 ObjectName = hit.collider.name;
+            }
+            else
+            {
+                ObjectName = default;
+            }
+            
+            if (ObjectName == "Tableau")
+            {
+                return;
             }
             
             LookAt = isPickUpObjectInFront;

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - canPickUp
   - OnlyLumiere
+  - Tableau
   layers:
   - Default
   - TransparentFX
