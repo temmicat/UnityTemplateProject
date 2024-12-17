@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/test puzzle/LD.unity
     guid: 6630035e049ca474f84c19cdcfbd334a
   m_configObjects:
