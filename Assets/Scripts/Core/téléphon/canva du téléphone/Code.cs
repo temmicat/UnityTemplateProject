@@ -10,6 +10,8 @@ namespace LastTrain.Core
     {
         [SerializeField] private Text Ans;
 
+        public GameObject canvas;
+
         private string Reponse = "456";
 
         public void Number(int number)
@@ -39,5 +41,7 @@ namespace LastTrain.Core
 
 
         }
+
+
     }
 }
