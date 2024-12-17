@@ -6,60 +6,48 @@ namespace LastTrain.Core
 {
     public class Afficher : MonoBehaviour
     {
-        public GameObject intIcon, lightOn, lightOff, switchOn, switchOff;
+        public GameObject interfaceUI;
 
-        public MonoBehaviour playerActionOff;
-        public bool toggle;
-        public AudioSource switchSound;
+        public MonoBehaviour cameraController;
 
+        [SerializeField] private bool isVisible = false;
 
-        public void DisableScript()
+        void Update()
         {
-            if (playerActionOff != null)
-            {
-                playerActionOff.enabled = false;
-                Debug.Log(playerActionOff.name + " désactivé !");
-            }
-            else
-            {
-                Debug.LogWarning("Aucun script assigné !");
-            }
-        }
 
-        void OnTriggerStay(Collider other)
-        {
-            if (other.CompareTag("Player"))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                intIcon.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.E))
+
+                isVisible = !isVisible;
+
+
+                interfaceUI.SetActive(isVisible);
+                if (isVisible)
                 {
-                    if (toggle == true)
+                    Time.timeScale = 0f;
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+
+
+                    if (cameraController != null)
                     {
-                        Debug.Log("On");
-                        lightOn.SetActive(true);
-                        lightOff.SetActive(false);
-
-
+                        cameraController.enabled = false;
                     }
-                    if (toggle == false)
-                    {
-                        Debug.Log("Off");
-                        lightOn.SetActive(false);
-                        lightOff.SetActive(true);
-                        switchOn.SetActive(false);
-                        switchOff.SetActive(true);
+                }
+                else
+                {
+                    Time.timeScale = 1f;
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
 
+
+                    if (cameraController != null)
+                    {
+                        cameraController.enabled = true;
                     }
                 }
             }
         }
-        void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                intIcon.SetActive(false);
-            }
-        }
-    }
 
+    }
 }
