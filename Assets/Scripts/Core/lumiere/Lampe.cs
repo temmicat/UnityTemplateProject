@@ -9,8 +9,7 @@ namespace LastTrain.Core
         public GameObject intIcon, lightOn, lightOff, switchOn, switchOff;
         public bool toggle { get; private set; }
         public PickUpObject headTorch;
-
-        public GameObject PDBH;
+        
         public AudioSource switchSound;
 
         void OnTriggerStay(Collider other)
