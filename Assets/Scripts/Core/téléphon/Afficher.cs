@@ -4,11 +4,27 @@ using UnityEngine;
 
 namespace LastTrain.Core
 {
-    public class Briser : MonoBehaviour
+    public class Afficher : MonoBehaviour
     {
-        public GameObject intIcon, vitreOn, vitreOff, boutonOn, boutonOff;
+        public GameObject intIcon, lightOn, lightOff, switchOn, switchOff;
+
+        public MonoBehaviour playerActionOff;
         public bool toggle;
         public AudioSource switchSound;
+
+
+        public void DisableScript()
+        {
+            if (playerActionOff != null)
+            {
+                playerActionOff.enabled = false;
+                Debug.Log(playerActionOff.name + " désactivé !");
+            }
+            else
+            {
+                Debug.LogWarning("Aucun script assigné !");
+            }
+        }
 
         void OnTriggerStay(Collider other)
         {
@@ -20,20 +36,19 @@ namespace LastTrain.Core
                     if (toggle == true)
                     {
                         Debug.Log("On");
-                        vitreOn.SetActive(true);
-                        vitreOff.SetActive(false);
-                        boutonOn.SetActive(true);
-                        boutonOff.SetActive(false);
-                        //switchSound.Play();
+                        lightOn.SetActive(true);
+                        lightOff.SetActive(false);
+
+
                     }
                     if (toggle == false)
                     {
                         Debug.Log("Off");
-                        vitreOn.SetActive(false);
-                        vitreOff.SetActive(true);
-                        boutonOn.SetActive(false);
-                        boutonOff.SetActive(true);
-                        //switchSound.Play();
+                        lightOn.SetActive(false);
+                        lightOff.SetActive(true);
+                        switchOn.SetActive(false);
+                        switchOff.SetActive(true);
+
                     }
                 }
             }
@@ -46,4 +61,5 @@ namespace LastTrain.Core
             }
         }
     }
+
 }

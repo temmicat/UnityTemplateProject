@@ -7,7 +7,9 @@ namespace LastTrain.Core
     public class Lampe : MonoBehaviour
     {
         public GameObject intIcon, lightOn, lightOff, switchOn, switchOff;
-        public bool toggle;
+        private bool toggle;
+
+        public GameObject PDBH;
         public AudioSource switchSound;
 
         void OnTriggerStay(Collider other)
@@ -17,24 +19,15 @@ namespace LastTrain.Core
                 intIcon.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (toggle == true)
-                    {
-                        Debug.Log("On");
-                        lightOn.SetActive(true);
-                        lightOff.SetActive(false);
-                        switchOn.SetActive(true);
-                        switchOff.SetActive(false);
-                        //switchSound.Play();
-                    }
-                    if (toggle == false)
-                    {
-                        Debug.Log("Off");
-                        lightOn.SetActive(false);
-                        lightOff.SetActive(true);
-                        switchOn.SetActive(false);
-                        switchOff.SetActive(true);
-                        //switchSound.Play();
-                    }
+                    toggle = !toggle;
+
+                    //Debug.Log("Off");
+                    lightOn.SetActive(!toggle);
+                    lightOff.SetActive(toggle);
+                    switchOn.SetActive(!toggle);
+                    switchOff.SetActive(toggle);
+                    //switchSound.Play();
+
                 }
             }
         }
