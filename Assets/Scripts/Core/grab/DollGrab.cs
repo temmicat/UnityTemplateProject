@@ -1,12 +1,12 @@
-﻿using JetBrains.Annotations;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LastTrain.Core
 {
     public class DollGrab : MonoBehaviour
     {
-        [SerializeField] [NotNull] private GameObject dollWorld, dollPlayer, numWorld, numPlayer;
+        [SerializeField] private GameObject dollWorld, dollPlayer, numWorld, numPlayer;
         [SerializeField] private PickUpObject bam;
+        [SerializeField] private AudioClip finished;
         
         private void Update()
         {
@@ -18,6 +18,8 @@ namespace LastTrain.Core
                     dollWorld.SetActive(true);
                     numPlayer.SetActive(true);
                     numWorld.SetActive(true);
+                    
+                    AudioSource.PlayClipAtPoint(finished, transform.position);
                     
                     Destroy(gameObject);
                     Destroy(this);
