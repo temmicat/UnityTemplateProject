@@ -7,7 +7,8 @@ namespace LastTrain.Core
     public class Lampe : MonoBehaviour
     {
         public GameObject intIcon, lightOn, lightOff, switchOn, switchOff;
-        private bool toggle;
+        public bool toggle { get; private set; }
+        public PickUpObject headTorch;
 
         public GameObject PDBH;
         public AudioSource switchSound;
@@ -28,6 +29,7 @@ namespace LastTrain.Core
                     switchOff.SetActive(toggle);
                     //switchSound.Play();
 
+                    headTorch.enabled = toggle;
                 }
             }
         }
